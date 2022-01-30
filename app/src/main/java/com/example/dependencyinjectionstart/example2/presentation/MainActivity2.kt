@@ -1,9 +1,7 @@
 package com.example.dependencyinjectionstart.example2.presentation
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +9,7 @@ import com.example.dependencyinjectionstart.R
 import com.example.dependencyinjectionstart.example2.ExampleApp
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val component by lazy {
         (application as ExampleApp).component
             .activityComponentFactory()
-            .create("My_ID", "My_Name")
+            .create("My_ID2", "My_Name")
     }
 
 
@@ -38,10 +36,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel.method()
         viewModel2.method()
-        val textView = findViewById<TextView>(R.id.text_view_hello_world)
-        textView.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
-        }
     }
 }
